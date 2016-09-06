@@ -55,8 +55,8 @@ defmodule Ex03 do
 
   """
 
-  def odd_even([], result), do: []
   def odd_even(a), do: odd_even(a, [])
+  def odd_even([], _result), do: []
   def odd_even([a | tail], _result) do
     case Integer.is_even a do
       true -> [:even] ++ odd_even(tail)
@@ -84,9 +84,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains([], _b), do: false
+  def list_contains([], _b),         do: false
   def list_contains([a | _tail], a), do: true
-  def list_contains([a | tail], b), do: list_contains(tail, b)
+  def list_contains([_a | tail], b), do: list_contains(tail, b)
 
   ##############################################################################
   # 3.3:  5 points #
@@ -110,8 +110,8 @@ defmodule Ex03 do
 
   """
 
-  def list_equal(a, a), do: true
-  def list_equal(a, b), do: false
+  def list_equal(a, a),   do: true
+  def list_equal(_a, _b), do: false
 
 
 
@@ -159,9 +159,15 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won do
-    IO.puts "won"
-  end
+  def won({a, a, a,  _, _, _,  _, _, _}), do: a
+  def won({_, _, _,  a, a, a,  _, _, _}), do: a
+  def won({_, _, _,  _, _, _,  a, a, a}), do: a
+  def won({a, _, _,  a, _, _,  a, _, _}), do: a
+  def won({_, a, _,  _, a, _,  _, a, _}), do: a
+  def won({_, _, a,  _, _, a,  _, _, a}), do: a
+  def won({a, _, _,  _, a, _,  _, _, a}), do: a
+  def won({_, _, a,  _, a, _,  a, _, _}), do: a
+  def won({_, _, _,  _, _, _,  _, _, _}), do: false
 
 
   ###########################
