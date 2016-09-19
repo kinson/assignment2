@@ -57,16 +57,8 @@ defmodule Ex04 do
 
   """
 
-
   def min(a) do
-    reduce(a,
-    fn a, b ->
-      case a < b do
-        true -> a
-        false -> b
-      end
-    end
-    )
+    reduce(a, &(min(&1, &2)))
   end
 
 
